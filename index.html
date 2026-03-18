@@ -47,18 +47,22 @@
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
   const el = document.querySelector(".lottie-file-middle");
   if (!el) return;
 
-  function updateMove() {
-    const y = window.scrollY * 1; 
+  function animateOnScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+    /* двигаем ВВЕРХ, а не вниз */
+    const y = scrollTop * -0.35;
+
     el.style.setProperty("--moveY", y + "px");
+
+    requestAnimationFrame(animateOnScroll);
   }
 
-  updateMove();
-  window.addEventListener("scroll", updateMove, { passive: true });
-  window.addEventListener("wheel", updateMove, { passive: true });
+  requestAnimationFrame(animateOnScroll);
 });
 </script>
     <meta charset="utf-8">
