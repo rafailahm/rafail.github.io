@@ -922,17 +922,29 @@ window.addEventListener("load", function () {
         </script>
 </body>
 <script>
-  // Отключаем Lenis и возвращаем обычный скролл
-  if (window.lenis) {
-    window.lenis.destroy();
-  }
-  
-  // Возвращаем обычный скролл
-  document.body.style.overflow = 'auto';
-  document.documentElement.style.overflow = 'auto';
-  document.documentElement.style.scrollBehavior = 'smooth'; // добавляем плавность CSS
-  
-  // Удаляем класс lenis у html
-  document.documentElement.classList.remove('lenis', 'lenis-smooth');
+  // Принудительно отключаем Lenis и все кастомные скроллы
+  (function() {
+    // Удаляем классы Lenis
+    document.documentElement.classList.remove('lenis', 'lenis-smooth');
+    
+    // Возвращаем нормальный скролл
+    document.body.style.overflow = 'auto';
+    document.body.style.height = 'auto';
+    document.documentElement.style.overflow = 'auto';
+    document.documentElement.style.height = 'auto';
+    
+    // Удаляем обработчики Lenis, если они есть
+    if (window.lenis) {
+      try {
+        window.lenis.destroy();
+      } catch(e) {}
+      window.lenis = null;
+    }
+    
+    // Отключаем все возможные перехваты событий колесика
+    window.removeEventListener('wheel', function(){}, true);
+    
+    console.log('Скролл восстановлен');
+  })();
 </script>
 </html>
