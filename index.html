@@ -239,29 +239,25 @@ window.addEventListener("load", function () {
         rel="apple-touch-icon">
     <meta name="facebook-domain-verification" content="td8wkhnpj66nd64sim04ud7tkk8lwt">
     <style>
-    /* Применяем фон ко всем возможным элементам героя */
     .home-hero.home-3, 
-    .home-hero-component.home-3,
-    section.home-hero {
-        background-image: url("https://scontent.xx.fbcdn.net/v/t1.15752-9/653779455_816055107604733_6292008414945085638_n.png?_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=-QxJWWG4ZNIQ7kNvwEaWBu0&_nc_oc=Adqdn3FbTN1tp8Zfi0qQe3Jmf5Jwhl3jeJ2gfqeoxGPeFm2bOML1CRQb-Mx0jMwEPPdLaVJljj5Vr1sg9UL4CPv0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_ss=7a32e&oh=03_Q7cD4wFgXcTUPl-iRtiOjR4yzZz4QLqJ5opv62RwNCWNt_2o8A&oe=69EFAAAD") !important;
+    .home-hero-component.home-3 {
+        /* Накладываем градиент ПЕРЕД картинкой, чтобы он был сверху */
+        background-image: 
+            linear-gradient(180deg, rgba(15, 15, 15, 0) 60%, rgba(15, 15, 15, 0.8) 100%), 
+            url("https://scontent.xx.fbcdn.net/v/t1.15752-9/638320495_1926930304851444_8135189820319673946_n.png?stp=dst-png_s960x960&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=eblVaminOeAQ7kNvwHb3C0n&_nc_oc=AdoGyu2mSU21HLnoF1waL0OJBDTOGJlHBUCyhbXOoHG6jNL_tChfHmGXsXKz4VrK3dpSqEBwcP3gnJFORUVh8_rD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_ss=7a32e&oh=03_Q7cD4wED3pz8833iggRQbtzLhCbVBMIry5jpHpBlhzU0ZkuGbw&oe=69EFC328") !important;
+        
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
-        background-attachment: scroll !important;
-    }
-
-    /* Убираем старые фоновые изображения, если они сидят в псевдоэлементах */
-    .home-hero.home-3::before, .home-hero.home-3::after {
-        display: none !important;
     }
 </style>
 
 <script>
-// На всякий случай принудительно меняем через JS после загрузки
-window.addEventListener('DOMContentLoaded', (event) => {
+// Дублируем логику в JS, чтобы точно сработало
+window.addEventListener('DOMContentLoaded', () => {
     const hero = document.querySelector('.home-hero.home-3');
     if (hero) {
-        hero.style.backgroundImage = "url('https://scontent.xx.fbcdn.net/v/t1.15752-9/653779455_816055107604733_6292008414945085638_n.png?_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=-QxJWWG4ZNIQ7kNvwEaWBu0&_nc_oc=Adqdn3FbTN1tp8Zfi0qQe3Jmf5Jwhl3jeJ2gfqeoxGPeFm2bOML1CRQb-Mx0jMwEPPdLaVJljj5Vr1sg9UL4CPv0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_ss=7a32e&oh=03_Q7cD4wFgXcTUPl-iRtiOjR4yzZz4QLqJ5opv62RwNCWNt_2o8A&oe=69EFAAAD')";
+        hero.style.backgroundImage = "linear-gradient(180deg, rgba(15, 15, 15, 0) 60%, rgba(15, 15, 15, 0.8) 100%), url('https://scontent.xx.fbcdn.net/v/t1.15752-9/638320495_1926930304851444_8135189820319673946_n.png?stp=dst-png_s960x960&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=eblVaminOeAQ7kNvwHb3C0n&_nc_oc=AdoGyu2mSU21HLnoF1waL0OJBDTOGJlHBUCyhbXOoHG6jNL_tChfHmGXsXKz4VrK3dpSqEBwcP3gnJFORUVh8_rD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_ss=7a32e&oh=03_Q7cD4wED3pz8833iggRQbtzLhCbVBMIry5jpHpBlhzU0ZkuGbw&oe=69EFC328')";
     }
 });
 </script>
