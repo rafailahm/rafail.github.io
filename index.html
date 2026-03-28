@@ -239,20 +239,32 @@ window.addEventListener("load", function () {
         rel="apple-touch-icon">
     <meta name="facebook-domain-verification" content="td8wkhnpj66nd64sim04ud7tkk8lwt">
     <style>
-        .lenis.lenis-smooth {
-            scroll-behavior: auto;
-        }
+    /* Применяем фон ко всем возможным элементам героя */
+    .home-hero.home-3, 
+    .home-hero-component.home-3,
+    section.home-hero {
+        background-image: url("https://scontent.xx.fbcdn.net/v/t1.15752-9/653981490_1523309743137476_2526507981670209129_n.png?stp=dst-png_s960x960&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=XqrV0yI3pagQ7kNvwEy3VQ9&_nc_oc=Adqbr18v9W2Z1vTfg_jWPyiy1D58Pt53pVZY1bkVeamLPzfVjKxO8UYVo3CysJG5U6bnlHoyyZA66oyW_HlYrgeX&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_ss=7a32e&oh=03_Q7cD4wHXJT8P5EQ_Mft4TSOeqtXURoXj9YK-3tGAGYdvMR-ajg&oe=69EFBA9D") !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: scroll !important;
+    }
 
-        html.lenis {
-            height: auto;
-        }
-        .home-hero.home-3 {
-    background-image: url("https://scontent.xx.fbcdn.net/v/t1.15752-9/638098136_1644314636892328_2433786905963003000_n.png?stp=dst-png_s960x960&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=o1Z541aCjeUQ7kNvwHeVyma&_nc_oc=AdqKmJbaQhswYUP_G7F0DgdyTiJGSLiaXG_5Uf1PJQ7NywayV14KIIuSTttbq5DU66lMJKyFG9aVdgTPCfV63s5c&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_ss=7a32e&oh=03_Q7cD4wHX9pOKl06ktrpFlZK3NOV1DNASWm-AANznM_Yv2pDqQg&oe=69EF7B78") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-}
-    </style>
+    /* Убираем старые фоновые изображения, если они сидят в псевдоэлементах */
+    .home-hero.home-3::before, .home-hero.home-3::after {
+        display: none !important;
+    }
+</style>
+
+<script>
+// На всякий случай принудительно меняем через JS после загрузки
+window.addEventListener('DOMContentLoaded', (event) => {
+    const hero = document.querySelector('.home-hero.home-3');
+    if (hero) {
+        hero.style.backgroundImage = "url('https://scontent.xx.fbcdn.net/v/t1.15752-9/653981490_1523309743137476_2526507981670209129_n.png?stp=dst-png_s960x960&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=XqrV0yI3pagQ7kNvwEy3VQ9&_nc_oc=Adqbr18v9W2Z1vTfg_jWPyiy1D58Pt53pVZY1bkVeamLPzfVjKxO8UYVo3CysJG5U6bnlHoyyZA66oyW_HlYrgeX&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_ss=7a32e&oh=03_Q7cD4wHXJT8P5EQ_Mft4TSOeqtXURoXj9YK-3tGAGYdvMR-ajg&oe=69EFBA9D')";
+    }
+});
+</script>
     <link rel="stylesheet" href="https://embed.typeform.com/next/css/widget.css">
 </head>
 
